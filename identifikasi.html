@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Interaktif - Mengenal Fitur Microsoft Word</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        
+        .interactive-element {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        /* Efek hover untuk menandakan elemen bisa diklik */
+        .interactive-element:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            outline: 2px dashed #3b82f6;
+            border-radius: 4px;
+        }
+
+        /* Styling khusus untuk mensimulasikan Drop Cap */
+        .simulated-dropcap {
+            float: left;
+            font-size: 4rem;
+            line-height: 1;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+            font-family: "Times New Roman", Times, serif;
+            font-weight: bold;
+        }
+
+        /* Styling khusus untuk mensimulasikan WordArt */
+        .simulated-wordart {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: "Arial Black", Gadget, sans-serif;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 10px;
+        }
+
+        /* Styling untuk margin kertas (visual cue) */
+        .paper-margins {
+            padding: 2.54cm 3cm; /* Meniru margin Normal Word (Atas/Bawah 2.54cm, Kiri/Kanan 3cm) */
+        }
+
+        /* Animasi untuk Kuis */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake-animation {
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes pop {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .pop-animation {
+            animation: pop 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <div class="w-full md:w-2/3 h-full overflow-y-auto bg-gray-200 p-4 sm:p-8 relative">
+        
+        <!-- Instruksi mengambang -->
+        <div class="bg-blue-600 text-white text-sm sm:text-base px-4 py-2 rounded-full shadow-lg text-center mb-6 max-w-xl mx-auto animate-bounce">
+            💡 <strong>Instruksi:</strong> Klik pada Teks, Gambar, Tabel, Pinggiran Kertas, atau Menu di atasnya untuk melihat fitur Word!
+        </div>
+
+        <!-- Simulasi Menu Bar (Ribbon Atas Word) -->
+        <div class="mx-auto flex items-center bg-blue-800 rounded-t-md shadow-lg" style="width: 100%; max-w: 21cm;">
+            <div class="interactive-element text-white px-6 py-3 font-semibold text-sm sm:text-base flex items-center gap-2 hover:bg-blue-700 transition-colors rounded-tl-md" data-feature="fileSave">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                </svg>
+                Menu File (Save & Format)
+            </div>
+            <div class="text-blue-200 text-xs italic ml-4 hidden sm:block">Klik tombol File di samping untuk belajar menyimpan dokumen!</div>
+        </div>
+
+        <!-- Kontainer Kertas (Simulasi A4) -->
+        <div id="page-container" class="interactive-element bg-white mx-auto shadow-2xl relative rounded-b-md paper-margins" style="width: 100%; max-w: 21cm; min-height: 29.7cm;" data-feature="pageSetup">
+            
+            <!-- Judul (Simulasi WordArt & Center) -->
+            <div class="interactive-element mb-8" data-feature="wordArt">
+                <h1 class="simulated-wordart">SMP Laboratorium UM, Ruang Tumbuh Pendidikan dan Inovasi di Kota Malang</h1>
+            </div>
+
+            <!-- Paragraf 1 dengan Drop Cap -->
+            <div class="interactive-element text-gray-800 leading-relaxed text-justify mb-4" data-feature="dropCap">
+                <span class="simulated-dropcap">S</span>
+                <p>MP Laboratorium Universitas Negeri Malang (SMP Lab UM) menjadi salah satu satuan pendidikan yang berada di bawah pengelolaan Universitas Negeri Malang (UM). Sekolah ini tidak hanya menjalankan fungsi pendidikan bagi siswa jenjang SMP, tetapi juga menjadi bagian dari ekosistem sekolah laboratorium UM yang dikembangkan sebagai ruang untuk mengkaji dan mengembangkan praktik pendidikan dan pembelajaran.</p>
+            </div>
+
+            <!-- Gambar dan Caption -->
+            <div class="interactive-element flex flex-col items-center my-6 p-2" data-feature="imageInsert">
+                <!-- Menggunakan logo asli SMP Lab UM -->
+                <img src="https://smplab-um.sch.id/wp-content/uploads/2018/03/LOGO-BARU-EDIT-2-1024x1024.png" alt="Logo SMP Lab UM" class="w-40 h-40 object-contain rounded-full shadow-md border-4 border-blue-900 bg-white">
+                <p class="interactive-element text-sm text-gray-600 mt-2 font-semibold italic" data-feature="caption">
+                    Gambar 1. Logo SMP Lab UM
+                </p>
+            </div>
+
+            <!-- Paragraf 2 -->
+            <p class="interactive-element text-gray-800 leading-relaxed text-justify mb-4" style="text-indent: 1.5cm;" data-feature="paragraph">
+                Secara kelembagaan, sekolah laboratorium UM berada di bawah UPT Pengelola Sekolah Laboratorium (PSL) UM. Unit tersebut dibentuk secara formal pada Maret 2023 dengan salah satu fungsi utama menjadikan sekolah laboratorium sebagai tempat pengembangan keilmuan dan praktik kependidikan. UM saat ini mengelola delapan sekolah laboratorium yang tersebar di Kota Malang dan Kota Blitar, termasuk SMP Laboratorium Malang.
+            </p>
+
+            <!-- Paragraf 3 & 4: Simulasi Fitur Columns (Kolom) -->
+            <div class="interactive-element columns-1 sm:columns-2 gap-8 text-gray-800 leading-relaxed text-justify mb-6 p-4 rounded-md" data-feature="columns">
+                <p style="text-indent: 1.5cm; margin-bottom: 1rem;">
+                    Peran tersebut terlihat dari berbagai kegiatan pendidikan dan pengembangan siswa. Pada perayaan HUT ke-35 SMP Lab UM pada April 2025, sekolah tercatat memiliki lebih dari 650 siswa. Perayaan tersebut tidak hanya diisi kegiatan seremonial, tetapi juga jalan sehat dan pertunjukan seni yang menampilkan kreativitas siswa. Kegiatan itu mengangkat tema “Sejati”, yang merupakan akronim dari Sehatkan Jasmani, Bentuk Jati Diri, Berakhlak, dan Berbudi.
+                </p>
+                <p style="text-indent: 1.5cm;">
+                    SMP Lab UM juga memiliki pengalaman dalam kegiatan pendidikan berskala internasional. Pada Desember 2025, lima siswa SMP Laboratorium Malang bersama siswa dari SMP Laboratorium Blitar mengikuti program China – ASEAN Education Cooperation Week di Guiyang, China. Program tersebut menjadi kesempatan bagi siswa untuk memperoleh pengalaman belajar dan interaksi lintas budaya.
+                </p>
+            </div>
+            
+            <!-- Paragraf 5: Simulasi Fitur Borders & Shading -->
+            <div class="interactive-element border-2 border-dashed border-blue-500 bg-blue-50 p-4 rounded-md mb-8 text-justify" data-feature="borders">
+                <p class="text-gray-800 leading-relaxed" style="text-indent: 1.5cm;">
+                    Dengan posisinya sebagai sekolah laboratorium, SMP Lab UM memiliki peluang untuk terus mengembangkan pembelajaran yang inovatif, kreatif, dan kontekstual. Tantangannya bukan hanya mempertahankan prestasi, tetapi memastikan sekolah tetap menjadi ruang belajar yang mampu menghubungkan perkembangan ilmu pengetahuan, teknologi, karakter, dan kebutuhan siswa di tengah perubahan zaman.
+                </p>
+            </div>
+
+            <!-- Tabel Biodata -->
+            <div class="interactive-element overflow-x-auto" data-feature="table">
+                <table class="w-full border-collapse border-2 border-gray-800 text-sm sm:text-base">
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-600 px-4 py-2 font-semibold w-1/3 bg-gray-100">Tanggal Diketik</td>
+                            <td class="border border-gray-600 px-4 py-2 text-gray-500 italic">(Isi tanggal hari ini)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-600 px-4 py-2 font-semibold bg-gray-100">Nama Lengkap</td>
+                            <td class="border border-gray-600 px-4 py-2 text-gray-500 italic">(Isi nama lengkap kamu)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-600 px-4 py-2 font-semibold bg-gray-100">Kelas</td>
+                            <td class="border border-gray-600 px-4 py-2 text-gray-500 italic">(Isi kelas Kamu)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- Penutup Kontainer Kertas -->
+
+    </div>
+
+    <div class="w-full md:w-1/3 bg-white h-full shadow-[-10px_0_15px_-3px_rgba(0,0,0,0.1)] flex flex-col z-10 border-t-4 md:border-t-0 md:border-l-4 border-blue-500">
+        
+        <div class="bg-blue-600 text-white p-6 transition-colors duration-300" id="panel-header">
+            <h1 class="text-2xl font-bold">Eksplorasi Fitur Word</h1>
+            <p class="text-blue-100 text-sm mt-1" id="panel-subtitle">Sistem Deteksi Fitur Interaktif</p>
+        </div>
+
+        <div id="info-panel" class="p-6 flex-1 overflow-y-auto flex flex-col items-center justify-center text-center relative">
+            <!-- Tampilan Default (Sebelum ada yang diklik) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-gray-300 mb-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+            </svg>
+            <h2 class="text-xl font-semibold text-gray-600">Belum ada elemen yang dipilih</h2>
+            <p class="text-gray-500 mt-2">Pilih atau klik salah satu komponen pada dokumen di sebelah kiri untuk memulai tantangan!</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Data base fitur-fitur Word berdasarkan identifier
+        const wordFeatures = {
+            fileSave: {
+                title: "Menyimpan Dokumen & Format File",
+                icon: "M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4",
+                description: "Mempelajari perbedaan cara menyimpan dokumen dan berbagai format file (ekstensi) yang sering digunakan.",
+                features: [
+                    { name: "Save (Simpan)", detail: "Menyimpan perubahan pada dokumen yang <b>sudah pernah disimpan</b> sebelumnya. Menyimpan dengan nama dan lokasi yang sama. <br/><i>(Shortcut: Ctrl + S)</i>" },
+                    { name: "Save As (Simpan Sebagai)", detail: "Digunakan untuk menyimpan dokumen <b>BARU</b>, atau membuat salinan dokumen lama dengan <b>NAMA BARU</b>, <b>LOKASI BARU</b>, atau <b>FORMAT BARU</b>. <br/><i>(Shortcut: F12)</i>" },
+                    { name: "Format .DOCX dan .DOC", detail: "Format standar file Word. <b>.DOCX</b> digunakan pada Word 2007 ke atas (ukuran file lebih kecil dan aman), sedangkan <b>.DOC</b> untuk Word versi lama (97-2003)." },
+                    { name: "Format .PDF (Portable Document Format)", detail: "Format final. Dokumen yang disimpan sebagai PDF tampilannya tidak akan berantakan atau berubah meski dibuka di HP, laptop, atau komputer lain. Cocok untuk tugas yang akan dikumpulkan." },
+                    { name: "Format .RTF dan .TXT", detail: "<b>.RTF (Rich Text Format)</b>: Bisa dibuka di berbagai aplikasi pengolah kata selain Word, tetap mempertahankan huruf tebal/miring. <br/><b>.TXT (Plain Text)</b>: Hanya menyimpan teks murni, semua format warna, ukuran, tebal, dan tabel akan hilang (bisa dibuka di Notepad)." }
+                ],
+                color: "bg-red-600",
+                quiz: {
+                    question: "Tugasmu sudah selesai dan sudah disimpan dengan nama 'Tugas_1.docx'. Namun, guru memintamu mengumpulkan dalam bentuk file yang bentuk/tulisannya tidak akan berantakan saat dibuka di HP. Fitur apa yang harus kamu pilih?",
+                    options: ["Save > Pilih format .TXT", "Save As > Pilih format .PDF", "Save As > Pilih format .RTF", "Save > Pilih format .DOCX"],
+                    correctIndex: 1
+                }
+            },
+            pageSetup: {
+                title: "Page Setup (Pengaturan Halaman)",
+                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+                description: "Ini adalah pengaturan dasar kertas tempat kita mengetik.",
+                features: [
+                    { name: "Ukuran Kertas (Size)", detail: "Umumnya menggunakan A4 (21 cm x 29.7 cm) atau Letter. <br/><i>(Tab Layout > Size)</i>" },
+                    { name: "Orientasi (Orientation)", detail: "Dokumen ini menggunakan posisi tegak atau <b>Portrait</b> (berlawanan dengan mendatar/Landscape). <br/><i>(Tab Layout > Orientation)</i>" },
+                    { name: "Margin (Batas Tepi)", detail: "Jarak antara tepi kertas dengan teks. Dokumen standar sering memakai Normal (Atas/Bawah: 2.54cm, Kiri/Kanan: 3cm). <br/><i>(Tab Layout > Margins)</i>" }
+                ],
+                color: "bg-teal-500",
+                quiz: {
+                    question: "Kamu mengklik area kosong/batas kertas. Fitur apa yang mengatur ukuran kertas, posisi tegak (portrait), dan jarak tepi teks (margin)?",
+                    options: ["Page Setup", "Paragraph Format", "Print Preview", "Insert Shapes"],
+                    correctIndex: 0
+                }
+            },
+            wordArt: {
+                title: "WordArt & Text Formatting",
+                icon: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12", 
+                description: "Digunakan untuk membuat teks judul lebih menarik dan terpusat.",
+                features: [
+                    { name: "WordArt / Text Effects", detail: "Memberikan efek bayangan, gradasi, atau gaya 3D pada teks judul. <br/><i>(Tab Insert > WordArt)</i>" },
+                    { name: "Center Alignment", detail: "Membuat teks judul berada persis di tengah-tengah halaman (Rata Tengah). <br/><i>(Tab Home > Center)</i>" }
+                ],
+                color: "bg-purple-500",
+                quiz: {
+                    question: "Teks judul terlihat memiliki warna gradasi biru-ungu dan agak tebal. Fitur apa yang paling tepat digunakan untuk menghias teks seperti ini?",
+                    options: ["Font Color", "WordArt", "Text Highlight", "Drop Cap"],
+                    correctIndex: 1
+                }
+            },
+            dropCap: {
+                title: "Drop Cap",
+                icon: "M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12",
+                description: "Membuat huruf pertama dalam sebuah paragraf menjadi sangat besar, sering digunakan di majalah, artikel, atau buku.",
+                features: [
+                    { name: "Drop Cap", detail: "Mengubah huruf 'S' menjadi besar dan mengambil ruang beberapa baris teks di sebelahnya. <br/><i>(Tab Insert > Drop Cap > Dropped)</i>" }
+                ],
+                color: "bg-yellow-500",
+                quiz: {
+                    question: "Huruf 'S' di awal paragraf pertama sengaja dibesarkan hingga mengambil ruang 3 baris teks. Fitur apa namanya?",
+                    options: ["Change Case", "Font Size", "Superscript", "Drop Cap"],
+                    correctIndex: 3
+                }
+            },
+            paragraph: {
+                title: "Format Paragraf",
+                icon: "M4 6h16M4 12h16M4 18h7",
+                description: "Pengaturan tata letak teks agar rapi dan mudah dibaca.",
+                features: [
+                    { name: "Justify (Rata Kanan-Kiri)", detail: "Membuat tepi teks sebelah kiri dan kanan menjadi lurus dan rapi. <br/><i>(Tab Home > Justify / Ctrl+J)</i>" },
+                    { name: "First Line Indent", detail: "Membuat baris pertama pada setiap paragraf menjorok ke dalam. <br/><i>(Ruler > Tarik segitiga paling atas ke kanan)</i>" },
+                    { name: "Line Spacing", detail: "Mengatur jarak spasi antar baris kalimat agar tidak terlalu rapat (misal: 1.15 atau 1.5). <br/><i>(Tab Home > Line and Paragraph Spacing)</i>" }
+                ],
+                color: "bg-blue-500",
+                quiz: {
+                    question: "Teks pada paragraf ini memiliki sisi kiri dan kanan yang lurus rapi (Justify), serta baris pertamanya menjorok ke dalam. Ini termasuk ke dalam pengaturan...",
+                    options: ["Format Font", "Format Paragraf", "Page Layout", "Insert Text"],
+                    correctIndex: 1
+                }
+            },
+            imageInsert: {
+                title: "Insert Picture & Wrap Text",
+                icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+                description: "Memasukkan objek visual ke dalam dokumen teks.",
+                features: [
+                    { name: "Insert Pictures", detail: "Memasukkan file gambar logo SMP Lab UM ke dalam dokumen. <br/><i>(Tab Insert > Pictures)</i>" },
+                    { name: "Wrap Text (In Line / Square)", detail: "Mengatur bagaimana teks mengelilingi atau merespon keberadaan gambar. <br/><i>(Tab Picture Format > Wrap Text)</i>" },
+                    { name: "Center Alignment", detail: "Memosisikan gambar berada di tengah kertas. <br/><i>(Tab Home > Center)</i>" }
+                ],
+                color: "bg-pink-500",
+                quiz: {
+                    question: "Langkah pertama yang harus dilakukan untuk memasukkan logo SMP Lab UM ini ke lembar kerja Word adalah menggunakan menu...",
+                    options: ["Insert > Table", "Insert > Chart", "Insert > Pictures", "Insert > SmartArt"],
+                    correctIndex: 2
+                }
+            },
+            caption: {
+                title: "Insert Caption",
+                icon: "M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z",
+                description: "Memberikan keterangan resmi di bawah gambar, tabel, atau diagram.",
+                features: [
+                    { name: "Insert Caption", detail: "Menambahkan teks 'Gambar 1. Logo SMP Lab UM' secara otomatis yang terhubung dengan gambar. <br/><i>(Tab References > Insert Caption)</i>" },
+                    { name: "Italic Format", detail: "Gaya huruf miring yang sering digunakan untuk membedakan teks keterangan dengan teks isi. <br/><i>(Tab Home > Italic / Ctrl+I)</i>" }
+                ],
+                color: "bg-indigo-500",
+                quiz: {
+                    question: "Tulisan 'Gambar 1. Logo SMP Lab UM' berfungsi sebagai keterangan resmi gambar. Fitur apa yang bisa membuat keterangan ini secara otomatis berurutan?",
+                    options: ["Insert Caption", "Text Box", "WordArt", "Footnote"],
+                    correctIndex: 0
+                }
+            },
+            table: {
+                title: "Pembuatan Tabel",
+                icon: "M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z",
+                description: "Menyajikan data atau form isian dalam bentuk baris dan kolom yang terstruktur.",
+                features: [
+                    { name: "Insert Table", detail: "Membuat area tabel dengan jumlah baris dan kolom tertentu (pada contoh ini: 3 Baris, 2 Kolom). <br/><i>(Tab Insert > Table)</i>" },
+                    { name: "Borders & Shading", detail: "Menambahkan garis tepi (Borders) pada sel tabel, dan bisa memberi warna latar (Shading) pada kolom tertentu. <br/><i>(Tab Table Design)</i>" }
+                ],
+                color: "bg-green-600",
+                quiz: {
+                    question: "Bentuk kotak-kotak bergaris ini sangat cocok digunakan untuk mengisi biodata terstruktur. Fitur apakah yang digunakan?",
+                    options: ["Columns", "Table", "Text Box", "Shapes"],
+                    correctIndex: 1
+                }
+            },
+            columns: {
+                title: "Format Kolom (Columns)",
+                icon: "M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2",
+                description: "Membagi susunan teks ke dalam dua atau lebih bagian secara vertikal.",
+                features: [
+                    { name: "Columns", detail: "Membuat teks terbagi menjadi format koran atau majalah (sisi kiri dan kanan). Dokumen ini menggunakan model 'Two' atau dua kolom. <br/><i>(Tab Layout > Columns)</i>" },
+                    { name: "Column Break", detail: "Memaksa teks untuk pindah ke kolom sebelahnya secara langsung. <br/><i>(Tab Layout > Breaks > Column)</i>" }
+                ],
+                color: "bg-cyan-600",
+                quiz: {
+                    question: "Perhatikan teks pada bagian ini yang terbagi rapi menjadi dua sisi (kiri dan kanan) seperti artikel di koran. Fitur MS Word apa yang digunakan untuk membuatnya?",
+                    options: ["Text Box", "Split Windows", "Columns", "Table"],
+                    correctIndex: 2
+                }
+            },
+            borders: {
+                title: "Garis Tepi (Borders & Shading)",
+                icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z",
+                description: "Menambahkan bingkai estetika untuk menonjolkan suatu paragraf atau halaman.",
+                features: [
+                    { name: "Paragraph Border", detail: "Memberikan garis bingkai di sekeliling paragraf yang dipilih. Pada contoh ini menggunakan gaya garis putus-putus (Dashed). <br/><i>(Tab Home > Borders > Borders and Shading)</i>" },
+                    { name: "Shading", detail: "Memberikan warna latar belakang di dalam area teks atau paragraf (pada dokumen ini diberi warna biru muda). <br/><i>(Tab Home > Shading icon ember cat)</i>" }
+                ],
+                color: "bg-amber-600",
+                quiz: {
+                    question: "Paragraf terakhir ini memiliki garis bingkai putus-putus biru di sekelilingnya beserta warna latar (Shading). Fitur apa yang digunakan untuk membuat garis bingkai teks tersebut?",
+                    options: ["Insert Shapes", "Page Margin", "Paragraph Borders", "Highlight Text"],
+                    correctIndex: 2
+                }
+            }
+        };
+
+        const interactiveElements = document.querySelectorAll('.interactive-element');
+        const infoPanel = document.getElementById('info-panel');
+        const panelHeader = document.getElementById('panel-header');
+        const panelSubtitle = document.getElementById('panel-subtitle');
+
+        function renderQuiz(featureKey) {
+            const data = wordFeatures[featureKey];
+            const quiz = data.quiz;
+
+            // Ubah header untuk mode kuis
+            panelHeader.className = 'bg-orange-500 text-white p-6 transition-colors duration-300';
+            panelHeader.querySelector('h1').innerText = "Waktunya Kuis!";
+            panelSubtitle.innerText = "Jawab dengan benar untuk membuka materi.";
+
+            let optionsHTML = '';
+            quiz.options.forEach((opt, index) => {
+                optionsHTML += `
+                    <button onclick="checkAnswer('${featureKey}', ${index}, this)" 
+                            class="w-full text-left p-4 mb-3 rounded-lg border-2 border-gray-200 hover:border-orange-400 hover:bg-orange-50 transition-all font-medium text-gray-700">
+                        ${String.fromCharCode(65 + index)}. ${opt}
+                    </button>
+                `;
+            });
+
+            infoPanel.innerHTML = `
+                <div class="w-full h-full flex flex-col justify-start animate-[fadeIn_0.3s_ease-in-out] text-left">
+                    <div class="bg-orange-100 rounded-xl p-5 mb-6 border border-orange-200 relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-orange-200 opacity-50">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-orange-800 mb-2 relative z-10">Pertanyaan:</h3>
+                        <p class="text-gray-700 relative z-10 leading-relaxed">${quiz.question}</p>
+                    </div>
+                    
+                    <div id="quiz-options" class="w-full">
+                        ${optionsHTML}
+                    </div>
+                    <div id="quiz-feedback" class="mt-4 text-center font-bold text-lg hidden"></div>
+                </div>
+            `;
+        }
+
+        // Fungsi global agar bisa dipanggil dari inline onclick
+        window.checkAnswer = function(featureKey, selectedIndex, buttonElement) {
+            const data = wordFeatures[featureKey];
+            const correctIndex = data.quiz.correctIndex;
+            const feedbackEl = document.getElementById('quiz-feedback');
+            const allButtons = document.querySelectorAll('#quiz-options button');
+
+            // Disable all buttons temporary
+            allButtons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === correctIndex) {
+                // Jawaban Benar
+                buttonElement.classList.remove('border-gray-200', 'hover:border-orange-400', 'hover:bg-orange-50');
+                buttonElement.classList.add('bg-green-500', 'text-white', 'border-green-600', 'shadow-lg');
+                
+                feedbackEl.innerHTML = "🎉 Luar Biasa! Jawabanmu Benar!";
+                feedbackEl.className = "mt-4 text-center font-bold text-lg text-green-600 pop-animation block";
+                
+                // Tunggu sebentar, lalu tampilkan materi detail
+                setTimeout(() => {
+                    renderFeatureDetail(featureKey);
+                }, 1500);
+
+            } else {
+                // Jawaban Salah
+                buttonElement.classList.remove('border-gray-200', 'hover:border-orange-400', 'hover:bg-orange-50');
+                buttonElement.classList.add('bg-red-100', 'text-red-700', 'border-red-500', 'shake-animation');
+                
+                feedbackEl.innerHTML = "❌ Wah, masih kurang tepat. Coba lagi yuk!";
+                feedbackEl.className = "mt-4 text-center font-bold text-lg text-red-500 block";
+
+                // Kembalikan tombol ke keadaan semula setelah animasi selesai agar bisa dicoba lagi
+                setTimeout(() => {
+                    buttonElement.classList.remove('bg-red-100', 'text-red-700', 'border-red-500', 'shake-animation');
+                    buttonElement.classList.add('border-gray-200', 'hover:border-orange-400', 'hover:bg-orange-50');
+                    feedbackEl.classList.add('hidden');
+                    allButtons.forEach(btn => btn.disabled = false);
+                }, 1200);
+            }
+        };
+
+        function renderFeatureDetail(featureKey) {
+            const data = wordFeatures[featureKey];
+            
+            // Ubah header ke warna tema fitur
+            panelHeader.className = `${data.color} text-white p-6 transition-colors duration-300`;
+            panelHeader.querySelector('h1').innerText = "Detail Fitur Word";
+            panelSubtitle.innerText = "Materi Pembelajaran";
+
+            let featureItemsHTML = '';
+            data.features.forEach(feat => {
+                featureItemsHTML += `
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 ${data.color.replace('bg-', 'border-')} mb-3 text-left shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-gray-800">${feat.name}</h4>
+                        <p class="text-sm text-gray-600 mt-1 leading-relaxed">${feat.detail}</p>
+                    </div>
+                `;
+            });
+
+            infoPanel.innerHTML = `
+                <div class="w-full h-full flex flex-col justify-start pop-animation text-left">
+                    <div class="${data.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${data.icon}" />
+                        </svg>
+                    </div>
+                    
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">${data.title}</h2>
+                    <p class="text-gray-600 mb-6 text-center">${data.description}</p>
+                    
+                    <div class="w-full flex-1 overflow-y-auto pr-2 pb-6">
+                        ${featureItemsHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        interactiveElements.forEach(element => {
+            element.addEventListener('click', function(event) {
+                event.stopPropagation();
+                
+                // Menghapus tanda seleksi dari elemen lain
+                interactiveElements.forEach(el => el.classList.remove('ring-4', 'ring-blue-400', 'ring-opacity-50', 'bg-blue-50'));
+                
+                // Memberikan tanda seleksi visual pada elemen yang diklik
+                this.classList.add('ring-4', 'ring-blue-400', 'ring-opacity-50');
+                if(!this.id.includes('page-container')) {
+                     this.classList.add('bg-blue-50');
+                }
+
+                const featureKey = this.getAttribute('data-feature');
+                if (wordFeatures[featureKey]) {
+                    // Selalu mulai dengan memunculkan kuis terlebih dahulu
+                    renderQuiz(featureKey);
+                }
+            });
+        });
+
+        // CSS Animation untuk fade in
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
